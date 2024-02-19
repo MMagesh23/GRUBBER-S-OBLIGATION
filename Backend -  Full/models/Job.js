@@ -13,7 +13,7 @@ const jobSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  area: {
+  district: {
     type: String,
     required: true,
   },
@@ -21,32 +21,46 @@ const jobSchema = new mongoose.Schema({
     type: String,
   },
   date: {
-    type: Date,
+    type: String,
     required: true,
   },
   time: {
     type: String,
     required: true,
   },
-  noOfRequired: {
+  name: {
+    type: String,
+    required: true,
+  },
+  phone: {
+    type: Number,
+    required: true,
+  },
+  numberOfPepole: {
     type: Number,
     required: true,
   },
   status: {
     type: String,
-    enum: ["active", "completed"], // Add more statuses if needed
-    default: "active", // Default status is active
+    enum: ["active", "completed"],
+    default: "active",
   },
   postedBy: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "User", // Reference to the User model
+    ref: "User",
     required: true,
   },
 });
 
 jobSchema.pre("save", function (next) {
   this.category = this.category.toLowerCase();
-  this.area = this.area.toLowerCase();
+  this.district = this.district.toLowerCase();
+
+  //  Date format (DD-MM-YYYY)
+  const [day, month, year] = this.date.split("-");
+  const formattedDate = `${year}-${month}-${day}`;
+  this.date = formattedDate;
+
   next();
 });
 
