@@ -24,7 +24,7 @@ const editProfile = async (req, res) => {
     }
 
     // Update user profile based on the request body
-    const { name, gender, dob, phone, email, address, area } = req.body;
+    const { name, gender, dob, phone, email, address, district } = req.body;
 
     // Update only if the field is provided in the request
     if (name) user.name = name;
@@ -33,7 +33,7 @@ const editProfile = async (req, res) => {
     if (phone) user.phone = phone;
     if (email) user.email = email;
     if (address) user.address = address;
-    if (area) user.area = area;
+    if (district) user.district = district;
 
     // Save the updated user profile
     await user.save();
