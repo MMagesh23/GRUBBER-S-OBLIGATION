@@ -8,11 +8,13 @@ const createJob = async (req, res) => {
       title,
       category,
       description,
-      area,
+      district,
       location,
       date,
       time,
-      noOfRequired,
+      name,
+      phone,
+      numberOfPepole,
     } = req.body;
     const userId = req.userId; // Assuming userId is in the request
 
@@ -20,11 +22,13 @@ const createJob = async (req, res) => {
       title,
       category,
       description,
-      area,
+      district,
       location,
       date,
       time,
-      noOfRequired,
+      name,
+      phone,
+      numberOfPepole,
       postedBy: userId, // Assign the userId to postedBy
     });
 
@@ -55,7 +59,7 @@ const getAllJobs = async (req, res) => {
 ______________________________________ Fillter a job _______________________________________*/
 const categoryJobs = async (req, res) => {
   try {
-    const { area } = req.query;
+    const { district } = req.query;
     let filter = {};
 
     // Get the category from the URL
@@ -66,8 +70,8 @@ const categoryJobs = async (req, res) => {
       console.log(filter.category);
     }
 
-    if (area) {
-      filter.area = area;
+    if (district) {
+      filter.district = district;
     }
 
     // Add a condition for the date to filter out both expired and completed jobs
@@ -121,22 +125,26 @@ const editJobDetails = async (req, res) => {
       title,
       description,
       category,
-      area,
+      district,
       location,
       date,
       time,
-      noOfRequired,
+      name,
+      phone,
+      numberOfPepole,
     } = req.body;
 
     // Update only if the field is provided in the request
     if (title) job.title = title;
     if (description) job.description = description;
     if (category) job.category = category;
-    if (area) job.area = area;
+    if (district) job.district = district;
     if (location) job.location = location;
     if (date) job.date = date;
     if (time) job.time = time;
-    if (noOfRequired) job.noOfRequired = noOfRequired;
+    if (name) job.name = name;
+    if (phone) job.phone = phone;
+    if (numberOfPepole) job.numberOfPepole = numberOfPepole;
 
     // Save the updated job details
     await job.save();
