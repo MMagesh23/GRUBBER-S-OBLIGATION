@@ -10,7 +10,7 @@ const userSchema = new mongoose.Schema({
     required: true,
   },
   dob: {
-    type: Date,
+    type: String,
     required: true,
   },
   age: {
@@ -30,7 +30,7 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  area: {
+  district: {
     type: String,
     required: true,
   },
