@@ -35,15 +35,6 @@ const signup = async (req, res) => {
     });
     await newUser.save();
 
-    // Generate a JWT token for authentication
-    // const token = jwt.sign(
-    //   { userId: newUser._id, userType: newUser.userType },
-    //   secretKey,
-    //   {
-    //     expiresIn: "1h",
-    //   }
-    // );
-
     return res.json({ messages: "Registration successfull" });
   } catch (error) {
     console.error("Error during registration:", error);
@@ -51,39 +42,6 @@ const signup = async (req, res) => {
   }
 };
 
-// const login = async (req, res) => {
-//   try {
-//     const { phone, password } = req.body;
-
-//     const user = await User.findOne({ phone });
-
-//     if (!user) {
-//       return res.status(401).json({ error: "Invalid credentials" });
-//     }
-
-//     // Compare the provided password with the stored hashed password
-//     const isPasswordValid = await bcrypt.compare(password, user.password);
-
-//     if (!isPasswordValid) {
-//       return res.status(401).json({ error: "Invalid credentials" });
-//     }
-
-//     //token
-//     console.log("Secret Key for Signing:", secretKey);
-//     const token = jwt.sign({ phone: phone }, secretKey, {
-//       expiresIn: "1h",
-//     });
-
-//     // const token = jwt.sign({ userId: user._id }, secretKey, {
-//     //   expiresIn: "1h",
-//     // });
-
-//     return res.json({ token });
-//   } catch (error) {
-//     console.error("Error during login:", error);
-//     return res.status(500).json({ error: "Internal Server Error" });
-//   }
-// };
 
 const login = async (req, res) => {
   try {
