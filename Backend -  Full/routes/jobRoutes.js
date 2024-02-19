@@ -19,7 +19,7 @@ const categories = [
   "cleaning",
   "construction",
   "handyman-services",
-  "moving-and-transportation",
+  "transport",
   "home-repairs",
   "painting",
   "babysitting",
@@ -41,7 +41,7 @@ categories.forEach((category) => {
 });
 
 //Route for view posted job's
-router.get("/posted-jobs", jobController.getPostedJobs);
+router.get("/job/manage-jobs", jobController.getPostedJobs);
 
 //Route for edit job detail's
 router.put("/edit-job/:jobId", jobController.editJobDetails);
