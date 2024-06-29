@@ -3,7 +3,7 @@
 ## Abstract
 One who works by the daily or for the daily wages, especially as an unskilled labour. This web application helps daily workers to get their job daily without any issues.
 
-## Tech Stack
+## Tech Stack(MERN Stack)
 
 ### Front-End
 - HTML
